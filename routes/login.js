@@ -34,7 +34,7 @@ router.get('/', function(req, res, next) {
 					//console.log(users[i]);
 					var user = users[i];
 					if((user.ID == queryObj.name)&&(user.pw == queryObj.pw)){
-						var resObj = {"success": false};
+						var resObj = {"success": true};
 						res.write(JSON.stringify(resObj));
 						res.end();
 						found = true;
