@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 		user: ['Will',"laura"]
 	});
 	*/
-  	res.render('index', { title: 'Veere' });
+  	res.render('index', { title: 'Vivre' });
   	console.log(req);
   	res.send("ok");
 });

@@ -1,3 +1,12 @@
 {
-	{name: 'howard_wang', pw: '1234'}
+    "Users": [
+        {
+            "ID": "howard_wang",
+            "pw": 1234
+        },
+        {
+            "ID": "john_adam",
+            "pw": 4321
+        }
+    ]
 }
