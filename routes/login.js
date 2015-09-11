@@ -22,9 +22,9 @@ router.get('/', function(req, res, next) {
 	}
 	*/
 	try{
-		fs.readFile("C:\\Users\\Howard\\Google Drive\\Scripts\\myFirstNodeJsApp\\myapp\\db\\loginInfo.json",'utf8',function(err,data){
+		fs.readFile("./db/loginInfo.json",'utf8',function(err,data){
 			if(err){
-				console.log('reading file error');
+				console.log('reading file error: ' + err.stack);
 				res.writeHead(500,{"content-type":"text/plain"});
 				res.end();
 			}else{
