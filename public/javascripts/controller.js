@@ -3,7 +3,7 @@ function login(){
     	name: $('#id').val(),
     	pw: $('#pw').val()
     }
-    $.get('http://localhost:3000/login',obj,function(data){
+    $.post('http://localhost:3000/login',obj,function(data){
     	if(JSON.parse(data).success){
     		alert("Login successful");
     	}else{
