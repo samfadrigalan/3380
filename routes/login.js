@@ -5,22 +5,13 @@ var router = express.Router();
 
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.post('/', function(req, res, next) {
 	console.log('in login.js');
-	var queryObj = url.parse(req.url,true).query;
-	/*
-	try{
-		fs.readdir("C:\\Users\\Howard\\Google Drive\\Scripts\\myFirstNodeJsApp\\myapp\\db\\loginInfo.json",function(err,files){
-			if(err)
-				throw(err);
-			else
-				console.log(files);
-		});
-	}catch(err){
-		console.log(err);
-		console.log('catched some error');
-	}
-	*/
+	var params = {
+		name: req.body['name'],
+		pw: req.body['pw']
+	};
+	console.log(params)
 	try{
 		fs.readFile("./db/loginInfo.json",'utf8',function(err,data){
 			if(err){
@@ -33,7 +24,7 @@ router.get('/', function(req, res, next) {
 				for(var i=0;i<users.length;i++){
 					//console.log(users[i]);
 					var user = users[i];
-					if((user.ID == queryObj.name)&&(user.pw == queryObj.pw)){
+					if((user.ID == params['name'])&&(user.pw == params['pw'])){
 						var resObj = {"success": true};
 						res.write(JSON.stringify(resObj));
 						res.end();
@@ -53,22 +44,6 @@ router.get('/', function(req, res, next) {
 		console.log(err);
 		console.log('catched some error');
 	}
-	//console.log(queryObj);
-	//console.log(urlpart.query);
-	/*
-	fs.readFile('/script/controller.js',function(err,data){
-		if(err){
-			console.log('error when reading file');
-			res.writeHead(500,{'content-type':'text/plain'});
-			res.write(err + '\n');
-			res.end();
-		}else{
-			res.writeHead(200,{'content-type':'application/javascripts'})
-			res.write(data);
-			res.end();
-		}
-	});
-*/
 });
 
 module.exports = router;
